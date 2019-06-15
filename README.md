@@ -4,6 +4,9 @@ python_taptap_spider
 爬取taptap 网站的给类别游戏
 
 #### 设计思路  
+
+![](/)
+
 - 编写类supplyUrl提供url，fetchHtml获取html，parser解析html，saver保存item
 - 用spiderThreadPool 来管理fetchHtml,parser,saver 线程，线程之间spiderThreadPool 的成员变量 queue 来通信。如，supplyUrl把url 写入`queue_fetch`，fetchHtml 从`queue_fetch`获取url，并将html 页面写入 `queue_parse` ，parser从`queue_parse` 获取html，将item写入到`queue_save`.....
 - 注意每一个通过`put()`方法进入队列的元素都有 `task_done()`，比如针对队列`queue_fetch`，fetchHtm从中取出一个url,并把根据该url 获取的html 写入到队列`queue_parse` 则给元素url 的任务完成，消费者调用`queue_fetch`的task_done方法
