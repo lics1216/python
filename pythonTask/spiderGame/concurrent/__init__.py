@@ -1,1 +1,0 @@
-from .spiderThreadPool import SpiderThreadPool as tapSpider
